@@ -90,3 +90,21 @@ http.createServer((req, res) => {
   res.writeHead(200);
   res.end('Bot is running');
 }).listen(process.env.PORT || 3000);
+
+const TelegramBot = require('node-telegram-bot-api');
+
+const token = process.env.BOT_TOKEN;
+
+console.log("🚀 Bot starting...");
+console.log("TOKEN:", token);
+
+const bot = new TelegramBot(token, { polling: true });
+
+bot.on('message', (msg) => {
+    console.log("📩 Message received:", msg.text);
+    bot.sendMessage(msg.chat.id, "მუშაობს 👍");
+});
+
+bot.on('polling_error', (error) => {
+    console.log("❌ Polling error:", error.message);
+});
