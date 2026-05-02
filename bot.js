@@ -2,7 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const xlsx = require('xlsx');
 const fs = require('fs');
 
-const token = '8528975244:AAH7I-FdIy_U-ORrAVE_6nAFyF8E50UkHd4';
+const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
 // ბოლო ატვირთული ფაილი
